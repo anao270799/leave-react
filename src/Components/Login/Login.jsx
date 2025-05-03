@@ -2,52 +2,37 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import emailIcon from '../Assets/email.png';
 import padlockIcon from '../Assets/padlock.png';
-import userIcon from '../Assets/user.png';
 
-const Registration = () => {
-  const [formData, setFormData] = useState({
-    username: '',
+const Login = () => {
+  const [loginData, setLoginData] = useState({
     email: '',
-    password: '',
+    password: ''
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setLoginData({
+      ...loginData,
       [e.target.name]: e.target.value
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted: ", formData);
-    alert("You clicked Submit! (Database will be added soon 💾)");
+    console.log("Login Data Submitted:", loginData);
+    alert("Login clicked! 🔐 (Login logic coming soon...)");
   };
 
   return (
     <div style={styles.container}>
-      <h2 style={{ marginBottom: '20px' }}>Sign Up</h2>
+      <h2 style={{ marginBottom: '20px' }}>Login</h2>
       <form onSubmit={handleSubmit} style={styles.form}>
-        <div style={styles.inputGroup}>
-          <img src={userIcon} alt="User Icon" style={styles.icon} />
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={formData.username}
-            onChange={handleChange}
-            style={styles.input}
-            required
-          />
-        </div>
-
         <div style={styles.inputGroup}>
           <img src={emailIcon} alt="Email Icon" style={styles.icon} />
           <input
             type="email"
             name="email"
             placeholder="Email"
-            value={formData.email}
+            value={loginData.email}
             onChange={handleChange}
             style={styles.input}
             required
@@ -60,14 +45,14 @@ const Registration = () => {
             type="password"
             name="password"
             placeholder="Password"
-            value={formData.password}
+            value={loginData.password}
             onChange={handleChange}
             style={styles.input}
             required
           />
         </div>
 
-        <button type="submit" style={styles.button}>Register</button>
+        <button type="submit" style={styles.button}>Login</button>
       </form>
 
       {/* Navigation Buttons */}
@@ -117,7 +102,7 @@ const styles = {
   },
   button: {
     padding: '10px',
-    backgroundColor: '#007bff',
+    backgroundColor: '#28a745',
     color: 'white',
     border: 'none',
     borderRadius: '5px',
@@ -141,4 +126,4 @@ const styles = {
   },
 };
 
-export default Registration;
+export default Login;
